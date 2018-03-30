@@ -17,7 +17,7 @@ class ENVied
     end
 
     def self.load(options = {})
-      envfile = File.expand_path('Envfile')
+      envfile = options.delete(:envfile) { File.expand_path('Envfile') }
       new(options).tap do |v|
         v.instance_eval(File.read(envfile), envfile)
       end
