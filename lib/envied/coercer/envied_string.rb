@@ -20,4 +20,12 @@ class ENVied::Coercer::ENViedString < Coercible::Coercer::String
   rescue ArgumentError
     raise_unsupported_coercion(str, __method__)
   end
+
+  # Coerce strings to ActiveSupport::Duration
+  # i.e '3 hours' == 3.hours
+  def to_duration(str)
+    require 'active_support'
+    _all, count, unit = */(\d+) (\w+)/.match(str)
+    Integer(count).public_send(unit)
+  end
 end

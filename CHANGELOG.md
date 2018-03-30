@@ -1,6 +1,7 @@
 ## 0.10.0 / 2018-03-30
 
 * Add option to pass in envfile path into `Configuration`
+* Add activesupport duration coercer
 
 ## 0.9.1 / 2017-07-06
 
