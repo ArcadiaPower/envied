@@ -1,3 +1,8 @@
+## 0.11.0 / 2019-03-23
+
+* Use implicit receiver for spring after_fork require call to support namespaced copies
+* Unset instance variables on `.clone` for `ENVied` singleton
+
 ## 0.10.0 / 2018-03-30
 
 * Add option to pass in envfile path into `Configuration`
