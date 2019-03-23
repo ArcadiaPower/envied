@@ -90,8 +90,9 @@ MSG
   def self.initialize_copy(original_envied)
     # We want a fresh class copy so clear out the
     super(original_envied).tap do |copy|
-      copy.remove_instance_variable(:@env)
-      copy.remove_instance_variable(:@config)
+      copy.instance_variables.each do |variable|
+        copy.remove_instance_variable(variable.to_sym)
+      end
     end
   end
 end

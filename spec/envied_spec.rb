@@ -5,6 +5,24 @@ describe ENVied do
     subject { described_class }
 
     it { is_expected.to respond_to :require }
+
+    describe '.clone' do
+      context 'with instance variables set' do
+        it 'clones without instance variables' do
+          expect(ENVied.instance_variables).to_not be_empty
+          expect(ENVied.clone.instance_variables).to eq []
+        end
+      end
+
+      context 'without instance variables set' do
+        let(:fresh_clone) { ENVied.clone }
+
+        it 'clones without instance variables' do
+          expect(fresh_clone.instance_variables).to be_empty
+          expect(fresh_clone.clone.instance_variables).to eq []
+        end
+      end
+    end
   end
 
   describe 'responding to methods that are variables' do
