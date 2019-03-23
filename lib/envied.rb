@@ -58,7 +58,7 @@ class ENVied
 
   def self.ensure_spring_after_fork_require(args, options = {})
     if spring_enabled? && !options[:via_spring]
-      Spring.after_fork { ENVied.require(args, options.merge(:via_spring => true)) }
+      Spring.after_fork { require(args, options.merge(:via_spring => true)) }
     end
   end
 
