@@ -86,4 +86,12 @@ MSG
   def self.respond_to_missing?(method, include_private = false)
     (env && env.has_key?(method)) || super
   end
+
+  def self.initialize_copy(original_envied)
+    # We want a fresh class copy so clear out the
+    super(original_envied).tap do |copy|
+      copy.remove_instance_variable(:@env)
+      copy.remove_instance_variable(:@config)
+    end
+  end
 end
